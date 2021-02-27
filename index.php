@@ -33,14 +33,14 @@
                     </div>
                     <div class="form-group">
                         <!-- Populate <select> options dinamically -->
-                        <select name="select_department" class="form-select" placeholder="Select Department">
+                        <select name="selectDepartment" id="selectDepartment" class="form-select" placeholder="Select Department">
                             <?php 
-                                $query = "SELECT name FROM department";
+                                $query = "SELECT * FROM department";
                                 $result1 = mysqli_query($conn, $query);
                             
                                 while($row1 = mysqli_fetch_array($result1)):; 
                             ?>
-                            <option><?php echo $row1[0];?></option>
+                            <option value='<?php echo $row1[0];?>'><?php echo $row1[1];?></option>
                             <?php endwhile;?>
                         </select>
                     </div>
@@ -59,12 +59,12 @@
                         <select name="select_location" class="form-select" placeholder="Select Location">
                         <!-- Populate <select> options dinamically -->
                         <?php 
-                                $query2 = "SELECT name FROM location";
+                                $query2 = "SELECT * FROM location";
                                 $result2 = mysqli_query($conn, $query2);
                             
                                 while($row1 = mysqli_fetch_array($result2)):; 
                             ?>
-                            <option><?php echo $row1[0];?></option>
+                            <option value='<?php echo $row1[0];?>'><?php echo $row1[1];?></option>
                             <?php endwhile;?>
                         </select>
                     </div>
