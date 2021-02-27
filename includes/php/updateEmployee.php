@@ -10,6 +10,9 @@
             $row = mysqli_fetch_array($result);
             $firstName = $row['firstName'];
             $lastName = $row['lastName'];
+            $jobTitle = $row['jobTitle'];
+            $email = $row['email'];
+
             
         }
     }
@@ -18,8 +21,10 @@
         $id = $_GET['id'];
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
+        $jobTitle = $_POST['jobTitle'];
+        $email = $_POST['email'];
 
-        $query = "UPDATE personnel set firstName = '$firstName', lastName = '$lastName' WHERE id = '$id'";
+        $query = "UPDATE personnel set firstName = '$firstName', lastName = '$lastName', jobTitle = '$jobTitle', email = '$email' WHERE id = '$id'";
         mysqli_query($conn, $query);
 
         $_SESSION['message'] = 'Employee updated successfully';
@@ -41,6 +46,12 @@
                     </div>
                     <div class="form-group">
                         <input type="text" name="lastName" value="<?php echo $lastName; ?>" class="form-control" placeholder="Update Last Name"> 
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="jobTitle" value="<?php echo $jobTitle; ?>" class="form-control" placeholder="Update Job Title"> 
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="email" value="<?php echo $email; ?>" class="form-control" placeholder="Update Email"> 
                     </div>
                     <button class="btn btn-success" name="update">
                         Update

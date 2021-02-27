@@ -32,14 +32,16 @@
                         <input type="text" name="email" class="form-control" placeholder="Email">
                     </div>
                     <div class="form-group">
+                        <!-- Populate <select> options dinamically -->
                         <select name="select_department" class="form-select" placeholder="Select Department">
-                            <option value="default">Select Department</option>
-                            <option value="marketing">Marketing</option>
-                            <option value="engineering">Engineering</option>
-                            <option value="sales">Sales</option>
-                            <option value="support">Support</option>
-                            <option value="accounting">Accounting</option>
-                            <option value="web_development">Web Development</option>
+                            <?php 
+                                $query = "SELECT name FROM department";
+                                $result1 = mysqli_query($conn, $query);
+                            
+                                while($row1 = mysqli_fetch_array($result1)):; 
+                            ?>
+                            <option><?php echo $row1[0];?></option>
+                            <?php endwhile;?>
                         </select>
                     </div>
                     <input type="submit" class="btn btn-success btn-block" name="save_employee" value="Create Employee">
@@ -55,13 +57,15 @@
                     </div>
                     <div class="form-group">
                         <select name="select_location" class="form-select" placeholder="Select Location">
-                            <option value="default">Select Location</option>
-                            <option value="1">London</option>
-                            <option value="2">New York</option>
-                            <option value="3">Paris</option>
-                            <option value="4">Munich</option>
-                            <option value="5">Rome</option>
-                            <option value="6">Belfast</option>
+                        <!-- Populate <select> options dinamically -->
+                        <?php 
+                                $query2 = "SELECT name FROM location";
+                                $result2 = mysqli_query($conn, $query2);
+                            
+                                while($row1 = mysqli_fetch_array($result2)):; 
+                            ?>
+                            <option><?php echo $row1[0];?></option>
+                            <?php endwhile;?>
                         </select>
                     </div>
                     <input type="submit" class="btn btn-success btn-block" name="save_department" value="Create Department">
