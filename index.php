@@ -1,12 +1,12 @@
 <?php include("includes/php/db.php") ?>
 
 <?php include("includes/header.php") ?>
-    
+
 <div class="container p-4">
 
     <div class="row">
 
-        <div class="col-md-4">
+        <div class="col-md-2">
 
             <?php if (isset($_SESSION['message'])) { ?>
                 <div class="alert alert-<?= $_SESSION['message_type']; ?> alert-dismissible fade show" role="alert">
@@ -78,23 +78,28 @@
                 </form>
             </div>
         </div>
-
-        <div class="col-md-8">
+        
+        <!-- Staff Table -->
+        <div class="col-md-6">
                 <table class="table table-bordered">
 
                     <thead>
+                        <tr class='header'>
+                            <th colspan='6'>Staff</th>
+                        </tr>
                         <tr>
                             <th>Name</th>
                             <th>Surname</th>
                             <th>Job Title</th>
                             <th>Email</th>
+                            <th>Department ID</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
                         
-                        $query = "SELECT * FROM personnel";
+                        $query = "SELECT * FROM personnel ORDER BY lastName ASC";
                         $result_personnel = mysqli_query($conn, $query);
                         
                         while($row = mysqli_fetch_array($result_personnel)) { ?>
@@ -103,6 +108,7 @@
                                 <td><?php echo $row['lastName'] ?></td>
                                 <td><?php echo $row['jobTitle'] ?></td>
                                 <td><?php echo $row['email'] ?></td>
+                                <td><?php echo $row['departmentID'] ?></td>
                                 <td>
                                     <a href="./includes/php/updateEmployee.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
                                         <i class="fas fa-marker"></i>
@@ -117,7 +123,48 @@
                     </tbody>
 
                 </table>
+                <!-- Departments Table -->
+        
+                <table class="table table-bordered">
+
+                    <thead>
+                        <tr class='header'>
+                            <th colspan='3'>Departments</th>
+                        </tr>
+                        <tr>
+                            <th>Department</th>
+                            <th>Location ID</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        
+                        $query = "SELECT * FROM department ORDER BY name ASC";
+                        $result_department = mysqli_query($conn, $query);
+                        
+                        while($row = mysqli_fetch_array($result_department)) { ?>
+                            <tr>
+                                <td><?php echo $row['name'] ?></td>
+                                <td><?php echo $row['locationID'] ?></td>
+                                <td>
+                                    <a href="./includes/php/updateDepartment.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
+                                        <i class="fas fa-marker"></i>
+                                    </a>
+                                    <a href="./includes/php/deleteDepartment.php?id=<?php echo $row['id']?>" class="btn btn-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                                
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+
+                </table>
+        
         </div>
+
+        
 
     </div>
 

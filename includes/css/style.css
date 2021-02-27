@@ -28,5 +28,10 @@
 .C {
     border: 1px solid white;
     padding: 2px;
+    margin: 2px;
 }
 
+.header {
+    color: white;
+    background-color: black;
+}
