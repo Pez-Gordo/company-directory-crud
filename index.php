@@ -16,7 +16,7 @@
             <?php session_unset(); } ?>
 
             <div class="card card-body">
-
+                <h3>Create New Employee</h3>
                 <form action="./includes/php/insertEmployee.php" method="POST">
 
                     <div class="form-group">
@@ -42,12 +42,41 @@
                             <option value="web_development">Web Development</option>
                         </select>
                     </div>
-                    <input type="submit" class="btn btn-success btn-block" name="save_employee" value="Save Employee">
+                    <input type="submit" class="btn btn-success btn-block" name="save_employee" value="Create Employee">
 
                 </form>
-
             </div>
-
+            <br>
+            <div class="card card-body">
+                <h3>Create New Department</h3>
+                <form action="./includes/php/insertDepartment.php" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="department" class="form-control" placeholder="Department" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <select name="select_location" class="form-select" placeholder="Select Location">
+                            <option value="default">Select Location</option>
+                            <option value="1">London</option>
+                            <option value="2">New York</option>
+                            <option value="3">Paris</option>
+                            <option value="4">Munich</option>
+                            <option value="5">Rome</option>
+                            <option value="6">Belfast</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-success btn-block" name="save_department" value="Create Department">
+                </form>
+            </div>
+            <br>
+            <div class="card card-body">
+                <h3>Create New Location</h3>
+                <form action="./includes/php/insertLocation.php" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="location" class="form-control" placeholder="Location" autofocus>
+                    </div>
+                    <input type="submit" class="btn btn-success btn-block" name="save_location" value="Create Location">
+                </form>
+            </div>
         </div>
 
         <div class="col-md-8">
