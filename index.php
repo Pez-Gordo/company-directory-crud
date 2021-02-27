@@ -50,8 +50,8 @@
 
         </div>
 
-        <div class="col_md_8">
-                <table>
+        <div class="col-md-8">
+                <table class="table table-bordered">
 
                     <thead>
                         <tr>
