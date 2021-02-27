@@ -9,8 +9,11 @@
         <div class="col-md-4">
 
             <?php if (isset($_SESSION['message'])) { ?>
-
-            <?php } ?>
+                <div class="alert alert-<?= $_SESSION['message_type']; ?> alert-dismissible fade show" role="alert">
+                    <?= $_SESSION['message'] ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php session_unset(); } ?>
 
             <div class="card card-body">
 
@@ -22,6 +25,22 @@
                     <div class="form-group">
                         <input type="text" name="surname" class="form-control" placeholder="Surname">
                     </div>
+                    <div class="form-group">
+                        <input type="text" name="job" class="form-control" placeholder="Job Title">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="email" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <select name="select_department" class="form-select" placeholder="Select Department">
+                            <option value="marketing">Marketing</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="sales">Sales</option>
+                            <option value="support">Support</option>
+                            <option value="accounting">Accounting</option>
+                            <option value="web_development">Web Development</option>
+                        </select>
+                    </div>
                     <input type="submit" class="btn btn-success btn-block" name="save_employee" value="Save Employee">
 
                 </form>
@@ -31,7 +50,34 @@
         </div>
 
         <div class="col_md_8">
+                <table>
 
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Job Title</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        
+                        $query = "SELECT * FROM personnel";
+                        $result_personnel = mysqli_query($conn, $query);
+                        
+                        while($row = mysqli_fetch_array($result_personnel)) { ?>
+                            <tr>
+                                <td><?php echo $row['firstName'] ?></td>
+                                <td><?php echo $row['lastName'] ?></td>
+                                <td><?php echo $row['jobTitle'] ?></td>
+                                <td><?php echo $row['email'] ?></td>
+                                
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+
+                </table>
         </div>
 
     </div>

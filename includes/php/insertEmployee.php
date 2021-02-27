@@ -5,8 +5,10 @@
     if (isset($_POST['save_employee'])) {
         $name = $_POST['name'];
         $surname = $_POST['surname'];
+        $job = $_POST['job'];
+        $email = $_POST['email'];
 
-        $query = "INSERT INTO personnel(firstName, lastName) VALUES ('$name', '$surname')";
+        $query = "INSERT INTO personnel(firstName, lastName, jobTitle, email) VALUES ('$name', '$surname', '$job', '$email')";
         $result = mysqli_query($conn, $query);
         if (!$result) {
             die("Query failed");
