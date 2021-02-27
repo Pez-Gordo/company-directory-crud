@@ -33,6 +33,7 @@
                     </div>
                     <div class="form-group">
                         <select name="select_department" class="form-select" placeholder="Select Department">
+                            <option value="default">Select Department</option>
                             <option value="marketing">Marketing</option>
                             <option value="engineering">Engineering</option>
                             <option value="sales">Sales</option>
@@ -58,6 +59,7 @@
                             <th>Surname</th>
                             <th>Job Title</th>
                             <th>Email</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,6 +74,14 @@
                                 <td><?php echo $row['lastName'] ?></td>
                                 <td><?php echo $row['jobTitle'] ?></td>
                                 <td><?php echo $row['email'] ?></td>
+                                <td>
+                                    <a href="./includes/php/updateEmployee.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
+                                        <i class="fas fa-marker"></i>
+                                    </a>
+                                    <a href="./includes/php/deleteEmployee.php?id=<?php echo $row['id']?>" class="btn btn-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
                                 
                             </tr>
                         <?php } ?>
