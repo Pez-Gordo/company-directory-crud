@@ -36,6 +36,12 @@
 
 <?php include("../header.php") ?>
 
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a href="../../index.php" class="navbar-brand">PHP-MYSQL-JS&nbsp;&nbsp;&nbsp; <span class="C">C<span class="c" >reate</span></span><span class="C">R<span class="r" >ead</span></span><span class="C">U<span class="u" >pdate</span></span><span class="C">D<span class="d" >elete</span></a>
+    </div>
+</nav>
+
 <div class="container p-4">
     <div class="row">
         <div class="col-md-4 mx-auto">
@@ -52,6 +58,19 @@
                     </div>
                     <div class="form-group">
                         <input type="text" name="email" value="<?php echo $email; ?>" class="form-control" placeholder="Update Email"> 
+                    </div>
+                    <div class="form-group">
+                        <!-- Populate <select> options dinamically -->
+                        <select name="selectDepartment" id="selectDepartment" class="form-select" placeholder="Select Department">
+                            <?php 
+                                $query = "SELECT * FROM department ORDER BY name ASC";
+                                $result1 = mysqli_query($conn, $query);
+                            
+                                while($row1 = mysqli_fetch_array($result1)):; 
+                            ?>
+                            <option value='<?php echo $row1[0];?>'><?php echo $row1[1];?></option>
+                            <?php endwhile;?>
+                        </select>
                     </div>
                     <button class="btn btn-success" name="update">
                         Update

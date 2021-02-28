@@ -2,11 +2,17 @@
 
 <?php include("includes/header.php") ?>
 
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a href="./index.php" class="navbar-brand">PHP-MYSQL-JS&nbsp;&nbsp;&nbsp; <span class="C">C<span class="c" >reate</span></span><span class="C">R<span class="r" >ead</span></span><span class="C">U<span class="u" >pdate</span></span><span class="C">D<span class="d" >elete</span></a>
+    </div>
+</nav>
+
 <div class="container p-4">
 
     <div class="row">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
 
             <?php if (isset($_SESSION['message'])) { ?>
                 <div class="alert alert-<?= $_SESSION['message_type']; ?> alert-dismissible fade show" role="alert">
@@ -84,7 +90,7 @@
         </div>
         
        
-        <div class="col-md-6">
+        <div id="tableContainer" class="col-md-9">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">

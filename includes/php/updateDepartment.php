@@ -37,6 +37,12 @@
 
 <?php include("../header.php") ?>
 
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a href="../../index.php" class="navbar-brand">PHP-MYSQL-JS&nbsp;&nbsp;&nbsp; <span class="C">C<span class="c" >reate</span></span><span class="C">R<span class="r" >ead</span></span><span class="C">U<span class="u" >pdate</span></span><span class="C">D<span class="d" >elete</span></a>
+    </div>
+</nav>
+
 <div class="container p-4">
     <div class="row">
         <div class="col-md-4 mx-auto">
@@ -49,7 +55,7 @@
                         <select name="select_location" class="form-select" placeholder="Select Location">
                         <!-- Populate <select> options dinamically -->
                         <?php 
-                                $query2 = "SELECT * FROM location";
+                                $query2 = "SELECT * FROM location ORDER BY name ASC";
                                 $result2 = mysqli_query($conn, $query2);
                             
                                 while($row1 = mysqli_fetch_array($result2)):; 

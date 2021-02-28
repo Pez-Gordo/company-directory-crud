@@ -11,11 +11,7 @@
     <script src="https://kit.fontawesome.com/cd2a202f36.js" crossorigin="anonymous"></script>
     <!-- Customized CSS -->
     <link rel="stylesheet" href="./includes/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">   
 </head>
 <body>
 
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container">
-        <a href="index.php" class="navbar-brand">PHP-MYSQL-JS&nbsp;&nbsp;&nbsp; <span class="C">C<span class="c" >reate</span></span><span class="C">R<span class="r" >ead</span></span><span class="C">U<span class="u" >pdate</span></span><span class="C">D<span class="d" >elete</span></a>
-    </div>
-</nav>
