@@ -118,14 +118,16 @@
                         <th>Surname</th>
                         <th>Job Title</th>
                         <th>Email</th>
-                        <th>Department ID</th>
+                        <th>Department</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php 
                     
-                    $query = "SELECT * FROM personnel ORDER BY lastName ASC";
+                    //$query = "SELECT * FROM personnel ORDER BY lastName ASC";
+                    $query = "SELECT * FROM personnel INNER JOIN department WHERE personnel.departmentID = department.id ORDER BY lastName ASC";
+                    
                     $result_personnel = mysqli_query($conn, $query);
                     
                     while($row = mysqli_fetch_array($result_personnel)) { ?>
@@ -134,7 +136,7 @@
                             <td><?php echo $row['lastName'] ?></td>
                             <td><?php echo $row['jobTitle'] ?></td>
                             <td><?php echo $row['email'] ?></td>
-                            <td><?php echo $row['departmentID'] ?></td>
+                            <td><?php echo $row['name'] ?></td>
                             <td>
                                 <a href="./includes/php/updateEmployee.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
                                     <i class="fas fa-marker"></i>
