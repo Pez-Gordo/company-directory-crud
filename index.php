@@ -6,7 +6,7 @@
 
     <div class="row">
 
-        <div class="col-md-2">
+        <div class="col-md-4">
 
             <?php if (isset($_SESSION['message'])) { ?>
                 <div class="alert alert-<?= $_SESSION['message_type']; ?> alert-dismissible fade show" role="alert">
@@ -35,7 +35,7 @@
                         <!-- Populate <select> options dinamically -->
                         <select name="selectDepartment" id="selectDepartment" class="form-select" placeholder="Select Department">
                             <?php 
-                                $query = "SELECT * FROM department";
+                                $query = "SELECT * FROM department ORDER BY name ASC";
                                 $result1 = mysqli_query($conn, $query);
                             
                                 while($row1 = mysqli_fetch_array($result1)):; 
@@ -59,7 +59,7 @@
                         <select name="select_location" class="form-select" placeholder="Select Location">
                         <!-- Populate <select> options dinamically -->
                         <?php 
-                                $query2 = "SELECT * FROM location";
+                                $query2 = "SELECT * FROM location ORDER BY name ASC";
                                 $result2 = mysqli_query($conn, $query2);
                             
                                 while($row1 = mysqli_fetch_array($result2)):; 
