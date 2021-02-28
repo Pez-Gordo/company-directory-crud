@@ -11,7 +11,7 @@
         }
 
         $_SESSION['message'] = 'Employee removed successfully';
-        $_SESSION['message_type'] = 'danger';
+        $_SESSION['message_type'] = 'success';
         header("Location: ../../index.php");
     }
 

@@ -29,7 +29,7 @@
         }
         
         $_SESSION['message'] = 'Department updated successfully';
-        $_SESSION['message_type'] = 'warning';
+        $_SESSION['message_type'] = 'success';
         header("Location: ../../index.php");
     }
 

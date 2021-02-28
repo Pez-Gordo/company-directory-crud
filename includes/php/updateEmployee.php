@@ -28,7 +28,7 @@
         mysqli_query($conn, $query);
 
         $_SESSION['message'] = 'Employee updated successfully';
-        $_SESSION['message_type'] = 'warning';
+        $_SESSION['message_type'] = 'success';
         header("Location: ../../index.php");
     }
 

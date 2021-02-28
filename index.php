@@ -165,6 +165,43 @@
                     </tbody>
 
                 </table>
+
+                <!-- Locations Table -->
+        
+                <table class="table table-bordered">
+
+                    <thead>
+                        <tr class='header'>
+                            <th colspan='2'>Locations</th>
+                        </tr>
+                        <tr>
+                            <th>Location</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        
+                        $query = "SELECT * FROM location ORDER BY name ASC";
+                        $result_department = mysqli_query($conn, $query);
+                        
+                        while($row = mysqli_fetch_array($result_department)) { ?>
+                            <tr>
+                                <td><?php echo $row['name'] ?></td>
+                                <td>
+                                    <a href="./includes/php/updateLocation.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
+                                        <i class="fas fa-marker"></i>
+                                    </a>
+                                    <a href="./includes/php/deleteLocation.php?id=<?php echo $row['id']?>" class="btn btn-danger">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                                
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+
+                </table>
         
         </div>
 
