@@ -83,125 +83,135 @@
             </div>
         </div>
         
-        <!-- Staff Table -->
+       
         <div class="col-md-6">
-                <table id="tableStaff" class="table table-bordered">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="btnradio1">Staff</label>
 
-                    <thead>
-                        <tr class='header'>
-                            <th colspan='6'>Staff</th>
-                        </tr>
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnradio2">Departments</label>
+
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="btnradio3">Locations</label>
+                        </div>
+                    </div>
+                </nav>
+            </div>  
+            <!-- Staff Table -->
+            <table id="tableStaff" class="table table-bordered">
+                <thead>
+                    <tr class='header'>
+                        <th colspan='6'>Staff</th>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Job Title</th>
+                        <th>Email</th>
+                        <th>Department ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    
+                    $query = "SELECT * FROM personnel ORDER BY lastName ASC";
+                    $result_personnel = mysqli_query($conn, $query);
+                    
+                    while($row = mysqli_fetch_array($result_personnel)) { ?>
                         <tr>
-                            <th>Name</th>
-                            <th>Surname</th>
-                            <th>Job Title</th>
-                            <th>Email</th>
-                            <th>Department ID</th>
-                            <th>Actions</th>
+                            <td><?php echo $row['firstName'] ?></td>
+                            <td><?php echo $row['lastName'] ?></td>
+                            <td><?php echo $row['jobTitle'] ?></td>
+                            <td><?php echo $row['email'] ?></td>
+                            <td><?php echo $row['departmentID'] ?></td>
+                            <td>
+                                <a href="./includes/php/updateEmployee.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
+                                    <i class="fas fa-marker"></i>
+                                </a>
+                                <a href="./includes/php/deleteEmployee.php?id=<?php echo $row['id']?>" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                            
                         </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        
-                        $query = "SELECT * FROM personnel ORDER BY lastName ASC";
-                        $result_personnel = mysqli_query($conn, $query);
-                        
-                        while($row = mysqli_fetch_array($result_personnel)) { ?>
-                            <tr>
-                                <td><?php echo $row['firstName'] ?></td>
-                                <td><?php echo $row['lastName'] ?></td>
-                                <td><?php echo $row['jobTitle'] ?></td>
-                                <td><?php echo $row['email'] ?></td>
-                                <td><?php echo $row['departmentID'] ?></td>
-                                <td>
-                                    <a href="./includes/php/updateEmployee.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
-                                        <i class="fas fa-marker"></i>
-                                    </a>
-                                    <a href="./includes/php/deleteEmployee.php?id=<?php echo $row['id']?>" class="btn btn-danger">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </td>
-                                
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-
-                </table>
-                <!-- Departments Table -->
-        
-                <table id="tableDepartments" class="table table-bordered">
-
-                    <thead>
-                        <tr class='header'>
-                            <th colspan='3'>Departments</th>
-                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+            <!-- Departments Table -->
+    
+            <table id="tableDepartments" class="table table-bordered">
+                <thead>
+                    <tr class='header'>
+                        <th colspan='3'>Departments</th>
+                    </tr>
+                    <tr>
+                        <th>Department</th>
+                        <th>Location ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    
+                    $query = "SELECT * FROM department ORDER BY name ASC";
+                    $result_department = mysqli_query($conn, $query);
+                    
+                    while($row = mysqli_fetch_array($result_department)) { ?>
                         <tr>
-                            <th>Department</th>
-                            <th>Location ID</th>
-                            <th>Actions</th>
+                            <td><?php echo $row['name'] ?></td>
+                            <td><?php echo $row['locationID'] ?></td>
+                            <td>
+                                <a href="./includes/php/updateDepartment.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
+                                    <i class="fas fa-marker"></i>
+                                </a>
+                                <a href="./includes/php/deleteDepartment.php?id=<?php echo $row['id']?>" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                            
                         </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        
-                        $query = "SELECT * FROM department ORDER BY name ASC";
-                        $result_department = mysqli_query($conn, $query);
-                        
-                        while($row = mysqli_fetch_array($result_department)) { ?>
-                            <tr>
-                                <td><?php echo $row['name'] ?></td>
-                                <td><?php echo $row['locationID'] ?></td>
-                                <td>
-                                    <a href="./includes/php/updateDepartment.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
-                                        <i class="fas fa-marker"></i>
-                                    </a>
-                                    <a href="./includes/php/deleteDepartment.php?id=<?php echo $row['id']?>" class="btn btn-danger">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </td>
-                                
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-
-                </table>
-
-                <!-- Locations Table -->
-        
-                <table id="tableLocations" class="table table-bordered">
-
-                    <thead>
-                        <tr class='header'>
-                            <th colspan='2'>Locations</th>
-                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+            <!-- Locations Table -->
+    
+            <table id="tableLocations" class="table table-bordered">
+                <thead>
+                    <tr class='header'>
+                        <th colspan='2'>Locations</th>
+                    </tr>
+                    <tr>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    
+                    $query = "SELECT * FROM location ORDER BY name ASC";
+                    $result_department = mysqli_query($conn, $query);
+                    
+                    while($row = mysqli_fetch_array($result_department)) { ?>
                         <tr>
-                            <th>Location</th>
-                            <th>Actions</th>
+                            <td><?php echo $row['name'] ?></td>
+                            <td>
+                                <a href="./includes/php/updateLocation.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
+                                    <i class="fas fa-marker"></i>
+                                </a>
+                                <a href="./includes/php/deleteLocation.php?id=<?php echo $row['id']?>" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                            
                         </tr>
-                    </thead>
-                    <tbody>
-                        <?php 
-                        
-                        $query = "SELECT * FROM location ORDER BY name ASC";
-                        $result_department = mysqli_query($conn, $query);
-                        
-                        while($row = mysqli_fetch_array($result_department)) { ?>
-                            <tr>
-                                <td><?php echo $row['name'] ?></td>
-                                <td>
-                                    <a href="./includes/php/updateLocation.php?id=<?php echo $row['id']?>" class="btn btn-secondary">
-                                        <i class="fas fa-marker"></i>
-                                    </a>
-                                    <a href="./includes/php/deleteLocation.php?id=<?php echo $row['id']?>" class="btn btn-danger">
-                                        <i class="far fa-trash-alt"></i>
-                                    </a>
-                                </td>
-                                
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-
-                </table>
+                    <?php } ?>
+                </tbody>
+            </table>
         
         </div>
 
