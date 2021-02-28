@@ -85,7 +85,7 @@
         
         <!-- Staff Table -->
         <div class="col-md-6">
-                <table class="table table-bordered">
+                <table id="tableStaff" class="table table-bordered">
 
                     <thead>
                         <tr class='header'>
@@ -129,7 +129,7 @@
                 </table>
                 <!-- Departments Table -->
         
-                <table class="table table-bordered">
+                <table id="tableDepartments" class="table table-bordered">
 
                     <thead>
                         <tr class='header'>
@@ -168,7 +168,7 @@
 
                 <!-- Locations Table -->
         
-                <table class="table table-bordered">
+                <table id="tableLocations" class="table table-bordered">
 
                     <thead>
                         <tr class='header'>
