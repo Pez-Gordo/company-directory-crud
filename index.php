@@ -26,16 +26,16 @@
                 <form action="./includes/php/insertEmployee.php" method="POST">
 
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Name" autofocus>
+                        <input type="text" id="employeeName" name="name" class="form-control" placeholder="Name" autofocus required>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="surname" class="form-control" placeholder="Surname">
+                        <input type="text" id="employeeSurname" name="surname" class="form-control" placeholder="Surname" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="job" class="form-control" placeholder="Job Title">
+                        <input type="text" id="employeeJob" name="job" class="form-control" placeholder="Job Title" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="email" class="form-control" placeholder="Email">
+                        <input type="text" id="employeeEmail" name="email" class="form-control" placeholder="Email" required>
                     </div>
                     <div class="form-group">
                         <!-- Populate <select> options dinamically -->
@@ -59,7 +59,7 @@
                 <h3>Create New Department</h3>
                 <form action="./includes/php/insertDepartment.php" method="POST">
                     <div class="form-group">
-                        <input type="text" name="department" class="form-control" placeholder="Department" autofocus>
+                        <input type="text" name="department" class="form-control" placeholder="Department" required>
                     </div>
                     <div class="form-group">
                         <select name="select_location" class="form-select" placeholder="Select Location">
@@ -74,7 +74,7 @@
                             <?php endwhile;?>
                         </select>
                     </div>
-                    <input type="submit" class="btn btn-success btn-block" name="save_department" value="Create Department">
+                    <input onclick="validateDepartment()" type="submit" class="btn btn-success btn-block" name="save_department" value="Create Department">
                 </form>
             </div>
             <br>
@@ -82,9 +82,9 @@
                 <h3>Create New Location</h3>
                 <form action="./includes/php/insertLocation.php" method="POST">
                     <div class="form-group">
-                        <input type="text" name="location" class="form-control" placeholder="Location" autofocus>
+                        <input type="text" name="location" class="form-control" placeholder="Location" required>
                     </div>
-                    <input type="submit" class="btn btn-success btn-block" name="save_location" value="Create Location">
+                    <input onclick="validateLocation()" type="submit" class="btn btn-success btn-block" name="save_location" value="Create Location">
                 </form>
             </div>
         </div>
@@ -105,8 +105,15 @@
                             <label class="btn btn-outline-primary" for="btnradio3">Locations</label>
                         </div>
                     </div>
+                    <div class="container-fluid">
+                        <div class="form-group">
+                            <input type="text" id="searchText" name="search" class="form-control" placeholder="Type Employee Surname">
+                            <input type="submit" class="btn btn-primary btn-block" name="searchButton" value="Search">
+                        </div>
+                    </div>
                 </nav>
             </div>  
+            
             <!-- Staff Table -->
             <table id="tableStaff" class="table table-bordered">
                 <thead>
@@ -126,7 +133,7 @@
                     <?php 
                     
                     //$query = "SELECT * FROM personnel ORDER BY lastName ASC";
-                    $query = "SELECT * FROM personnel INNER JOIN department WHERE personnel.departmentID = department.id ORDER BY lastName ASC";
+                    $query = "SELECT personnel.id, personnel.firstName, personnel.lastName, personnel.jobTitle, personnel.email, department.name FROM personnel LEFT JOIN department ON personnel.departmentID = department.id ORDER BY lastName ASC";
                     
                     $result_personnel = mysqli_query($conn, $query);
                     
